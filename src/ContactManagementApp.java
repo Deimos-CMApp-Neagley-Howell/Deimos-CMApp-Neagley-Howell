@@ -26,6 +26,7 @@ public class ContactManagementApp {
         Contact kenHowell = new Contact("Ken Howell", "2103153119");
         Contact kellseyNeagley = new Contact("Kellsey Neagley", "2103810439");
 
+
 //        System.out.printf("%-24s, hello!", kellseyNeagley.getName());
 
         List<String> ListString = Arrays.asList(kenHowell.getName() + " | " + kenHowell.getContactNumber(), kellseyNeagley.getName() + " | " + kellseyNeagley.getContactNumber());
@@ -40,16 +41,17 @@ public class ContactManagementApp {
             Path filepath = Paths.get("data", "contacts.txt");
             Files.write(filepath, ListString);
 //            written a output below
-//            List<String> updatedList = Files.readAllLines(filepath);
-//            for (String contact : updatedList){
-//                System.out.println(contact);
-//        };
-//            System.out.println("updatedList = " + updatedList);
+            List<String> updatedList = Files.readAllLines(filepath);
+            for (String contact : updatedList){
+                System.out.println(contact);
+            };
+            System.out.println("updatedList = " + updatedList);
         } catch(IOException e) {
             e.printStackTrace();
         }
 
 
+        Contact.newPerson("J.W. Hester", "2105555555");
         System.out.printf("Welcome to your Contact Management Application!%n");
 
         while (userOpt){

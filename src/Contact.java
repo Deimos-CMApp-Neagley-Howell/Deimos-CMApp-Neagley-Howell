@@ -2,6 +2,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
 import java.util.List;
 
 public class Contact {
@@ -27,6 +29,20 @@ public class Contact {
     public Contact (String contactName, String contactNumber){
         setName(contactName);
         setContactNumber(contactNumber);
+    }
+    public static void newPerson (String getName, String getContactNumber){
+        Contact newPerson = new Contact(getName, getContactNumber);
+
+        Path filepath = Paths.get("data", "contacts.txt");
+        try {
+            Files.write(filepath,
+                    Arrays.asList(newPerson.getName() + " | " + newPerson.getContactNumber()),
+                    StandardOpenOption.APPEND
+            );
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
 
     public static void printContacts() {
