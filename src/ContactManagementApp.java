@@ -20,6 +20,7 @@ public class ContactManagementApp {
 
         Path dataDirectory = Paths.get(folder);
         Path dataFile = Paths.get(folder, fileName);
+        boolean userOpt = true;
         Contact kenHowell = new Contact("Ken Howell", "2103153119");
         Contact kellseyNeagley = new Contact("Kellsey Neagley", "2103810439");
 
@@ -44,11 +45,48 @@ public class ContactManagementApp {
             e.printStackTrace();
         }
 
+
         System.out.printf("Welcome to your Contact Management Application!%n");
-        System.out.printf("1. View Contacts.%n2. Add a new contact.%n3. Search a contact by name.%n4. Delete an existing contact.%n5. Exit application.%n");
-        System.out.printf("Enter an option (1, 2, 3, 4 or 5):%n");
-        int userInput = sc.nextInt();
-        System.out.println("userInput = " + userInput);
+
+        while (userOpt){
+            System.out.printf("1. View Contacts.%n2. Add a new contact.%n3. Search a contact by name.%n4. Delete an existing contact.%n5. Exit application.%n");
+            System.out.printf("Enter an option (1, 2, 3, 4 or 5):%n");
+            int userInput = sc.nextInt();
+
+            switch (userInput){
+                case 1:
+                    System.out.println("print all contacts, ONE WORKS");
+                    break;
+                case 2:
+                    System.out.println("adding a contact, TWO WORKS");
+                    break;
+                case 3:
+                    System.out.println("searching for contact by contact name/prompt for name input, THREE WORKS");
+                    break;
+                case 4:
+                    System.out.println("delete an existing contact - ask for confirmation, FOUR WORKS");
+                    break;
+                case 5:
+                    System.out.println("Exit system/final write");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid option selected - please select again!");
+                    break;
+             }
+
+             sc.nextLine();
+            System.out.printf("Continue using our application? (y/n)%n");
+            String userContinue = sc.nextLine();
+
+           if (userContinue.equalsIgnoreCase("y" )|| userContinue.equalsIgnoreCase("yes")){
+               userOpt = true;
+           } else {
+               userOpt = false;
+           }
+        }
+
+        System.out.printf("Thank you for using our Contact Management System! Please use our application again soon! OR ELSE!!");
 
 
 //        Path filepath = Paths.get("data", "contacts.txt");
