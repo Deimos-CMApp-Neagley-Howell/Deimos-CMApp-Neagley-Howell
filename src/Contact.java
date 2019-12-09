@@ -1,3 +1,9 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
 public class Contact {
     private String contactName;
     private String contactNumber;
@@ -23,7 +29,20 @@ public class Contact {
         setContactNumber(contactNumber);
     }
 
+    public static void printContacts() {
+        String [] bucket;
+        Path filepath = Paths.get("data", "contacts.txt");
 
+        try {
+            List<String> updatedList = Files.readAllLines(filepath);
+            for (String contact : updatedList) {
+                bucket = contact.split("\\|");
+                System.out.printf("%-18s | %s%n", bucket[0], bucket[1]);
+            }
+        } catch (IOException e){
+            e.printStackTrace();
+        }
 
+    }
 }
 

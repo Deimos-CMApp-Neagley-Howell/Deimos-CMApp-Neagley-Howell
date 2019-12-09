@@ -9,6 +9,8 @@ import java.util.Scanner;
 public class ContactManagementApp {
     final static String folder = "data";
     final static String fileName = "contacts.txt";
+    static String nameTableHeader = "Name";
+    static String phonenumberTableHeader = "Phone Number";
 
     static Scanner sc = new Scanner(System.in);
 //    static Contact kenHowell = new Contact("Ken Howell", 2103153119);
@@ -23,6 +25,8 @@ public class ContactManagementApp {
         boolean userOpt = true;
         Contact kenHowell = new Contact("Ken Howell", "2103153119");
         Contact kellseyNeagley = new Contact("Kellsey Neagley", "2103810439");
+
+//        System.out.printf("%-24s, hello!", kellseyNeagley.getName());
 
         List<String> ListString = Arrays.asList(kenHowell.getName() + " | " + kenHowell.getContactNumber(), kellseyNeagley.getName() + " | " + kellseyNeagley.getContactNumber());
 
@@ -55,7 +59,9 @@ public class ContactManagementApp {
 
             switch (userInput){
                 case 1:
-                    System.out.println("print all contacts, ONE WORKS");
+                    System.out.printf("%-18s | %s%n", nameTableHeader, phonenumberTableHeader);
+                    System.out.println("---------------------------");
+                    Contact.printContacts();
                     break;
                 case 2:
                     System.out.println("adding a contact, TWO WORKS");

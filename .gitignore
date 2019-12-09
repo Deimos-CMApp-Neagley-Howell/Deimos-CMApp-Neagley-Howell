@@ -4,4 +4,4 @@
 *.iml
 
 *.class
-out/*
+#out/*
