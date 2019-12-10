@@ -87,33 +87,34 @@ public class Contact {
     }
 
     public static void searchContact(){
-        String [] bucket = new String[0];
         Path filepath = Paths.get("data", "contacts.txt");
         String userInput;
         Scanner sc = new Scanner(System.in);
+        boolean nomatch = true;
 
         System.out.printf("Search for existing contact - please enter your search (either by NAME or PHONE NUMBER)%n");
         userInput = sc.nextLine();
 
         try {
+
             List<String> updatedList = Files.readAllLines(filepath);
+
             for (String contact : updatedList) {
-                if (contact.contains(userInput)) {
-                    bucket = contact.split("\\|");
+                if (contact.toLowerCase().contains(userInput.toLowerCase())) {
+                    System.out.printf("Match found: %s%n", contact);
+                    nomatch = false;
                 }
+            }
+
+            if (nomatch){
+                System.out.printf("No match found!%n");
             }
 
         } catch (IOException e){
             e.printStackTrace();
         }
 
-        if (bucket.length > 0) {
-            System.out.println("Match found:");
-            System.out.println("---------------------------");
-            System.out.printf("%-18s | %s%n", bucket[0], bucket[1]);
-        } else {
-            System.out.printf("No match found!%n");
-        }
+
     }
 };
 
