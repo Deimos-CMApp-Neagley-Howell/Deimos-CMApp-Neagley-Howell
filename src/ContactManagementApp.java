@@ -13,10 +13,7 @@ public class ContactManagementApp {
     static String phonenumberTableHeader = "Phone Number";
 
     static Scanner sc = new Scanner(System.in);
-//    static Contact kenHowell = new Contact("Ken Howell", 2103153119);
-//static Contact kellseyNeagley = new Contact("Kellsey Neagley", 2103810439);
-//
-//    static List<Contact> testList = Arrays.asList(kenHowell, kellseyNeagley);
+
 
     public static void main(String[] args) {
 
@@ -26,13 +23,12 @@ public class ContactManagementApp {
         String userInput;
         boolean userOpt = true;
 
-        Contact kenHowell = new Contact("Ken Howell", "2103153119");
-        Contact kellseyNeagley = new Contact("Kellsey Neagley", "2103810439");
+//        Contact kenHowell = new Contact("Ken Howell", "2103153119");
+//        Contact kellseyNeagley = new Contact("Kellsey Neagley", "2103810439");
 
 
-//        System.out.printf("%-24s, hello!", kellseyNeagley.getName());
 
-        List<String> ListString = Arrays.asList(kenHowell.getName() + " | " + kenHowell.getContactNumber(), kellseyNeagley.getName() + " | " + kellseyNeagley.getContactNumber());
+//        List<String> ListString = Arrays.asList(kenHowell.getName() + " | " + kenHowell.getContactNumber(), kellseyNeagley.getName() + " | " + kellseyNeagley.getContactNumber());
 
         try {
             if (!Files.exists(dataDirectory)) {
@@ -42,13 +38,7 @@ public class ContactManagementApp {
                 Files.createFile(dataFile);
             }
             Path filepath = Paths.get("data", "contacts.txt");
-            Files.write(filepath, ListString);
-//            written a output below
-            List<String> updatedList = Files.readAllLines(filepath);
-            for (String contact : updatedList){
-                System.out.println(contact);
-            };
-            System.out.println("updatedList = " + updatedList);
+//            Files.write(filepath, ListString);
         } catch(IOException e) {
             e.printStackTrace();
         }
@@ -74,11 +64,10 @@ public class ContactManagementApp {
                     Contact.searchContact();
                     break;
                 case "4":
-//                    System.out.println("delete an existing contact - ask for confirmation, FOUR WORKS");
                     Contact.deleteContact();
                     break;
                 case "5":
-                    System.out.println("Exit system/final write");
+                    System.out.println("Thank you for using our Contact Management System!");
                     System.exit(0);
                     break;
                 default:
@@ -86,7 +75,6 @@ public class ContactManagementApp {
                     break;
              }
 
-//            sc.nextLine();
             System.out.printf("Continue using our application? (y/n)%n");
             userContinue = sc.nextLine();
 
