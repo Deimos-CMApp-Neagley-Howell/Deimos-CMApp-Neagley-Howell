@@ -67,7 +67,8 @@ public class ContactManagementApp {
                     Contact.deleteContact();
                     break;
                 case "5":
-                    System.out.println("Thank you for using our Contact Management System!");
+                    System.out.println("Thank you for using our Contact Management System! Here is your finalized contact list:");
+                    Contact.printContacts();
                     System.exit(0);
                     break;
                 default:
