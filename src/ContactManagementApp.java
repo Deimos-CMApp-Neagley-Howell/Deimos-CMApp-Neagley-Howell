@@ -22,7 +22,10 @@ public class ContactManagementApp {
 
         Path dataDirectory = Paths.get(folder);
         Path dataFile = Paths.get(folder, fileName);
+        String userContinue;
+        String userInput;
         boolean userOpt = true;
+
         Contact kenHowell = new Contact("Ken Howell", "2103153119");
         Contact kellseyNeagley = new Contact("Kellsey Neagley", "2103810439");
 
@@ -51,30 +54,30 @@ public class ContactManagementApp {
         }
 
 
-        Contact.newPerson("J.W. Hester", "2105555555");
         System.out.printf("Welcome to your Contact Management Application!%n");
 
         while (userOpt){
             System.out.printf("1. View Contacts.%n2. Add a new contact.%n3. Search a contact by name.%n4. Delete an existing contact.%n5. Exit application.%n");
             System.out.printf("Enter an option (1, 2, 3, 4 or 5):%n");
-            int userInput = sc.nextInt();
+            userInput = sc.nextLine();
 
             switch (userInput){
-                case 1:
+                case "1":
                     System.out.printf("%-18s | %s%n", nameTableHeader, phonenumberTableHeader);
                     System.out.println("---------------------------");
                     Contact.printContacts();
                     break;
-                case 2:
-                    System.out.println("adding a contact, TWO WORKS");
+                case "2":
+                    Contact.addContact();
                     break;
-                case 3:
-                    System.out.println("searching for contact by contact name/prompt for name input, THREE WORKS");
+                case "3":
+//                    System.out.println("searching for contact by contact name/prompt for name input, THREE WORKS");
+                    Contact.searchContact();
                     break;
-                case 4:
+                case "4":
                     System.out.println("delete an existing contact - ask for confirmation, FOUR WORKS");
                     break;
-                case 5:
+                case "5":
                     System.out.println("Exit system/final write");
                     System.exit(0);
                     break;
@@ -83,9 +86,9 @@ public class ContactManagementApp {
                     break;
              }
 
-             sc.nextLine();
+//            sc.nextLine();
             System.out.printf("Continue using our application? (y/n)%n");
-            String userContinue = sc.nextLine();
+            userContinue = sc.nextLine();
 
            if (userContinue.equalsIgnoreCase("y" )|| userContinue.equalsIgnoreCase("yes")){
                userOpt = true;
