@@ -3,6 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -114,6 +115,53 @@ public class Contact {
             e.printStackTrace();
         }
 
+
+    }
+
+    public static void deleteContact(){
+        Path filepath = Paths.get("data", "contacts.txt");
+        String userInput;
+        String userDeleteInput;
+        Scanner sc = new Scanner(System.in);
+        boolean nomatch = true;
+        boolean deleteplease = false;
+
+        System.out.printf("Search for existing contact to delete - please enter your search (either by NAME or PHONE NUMBER)%n");
+        userInput = sc.nextLine();
+
+        try {
+
+            List<String> updatedList = Files.readAllLines(filepath);
+            List<String> tempList = new ArrayList<>();
+
+            for (String contact : updatedList) {
+                if (contact.toLowerCase().contains(userInput.toLowerCase())) {
+                    nomatch = false;
+                    System.out.printf("Match to delete found:%s%nConfirm delete?%n", contact);
+                    userDeleteInput = sc.nextLine();
+                    if (userDeleteInput.equalsIgnoreCase("y") || userDeleteInput.equalsIgnoreCase("yes")){
+                        deleteplease = true;
+                        continue;
+                    } else {
+                        System.out.printf("Understood, returning to main menu.%n");
+                        tempList.clear();
+                        break;
+                    }
+                }
+                tempList.add(contact);
+            }
+
+            if (nomatch){
+                System.out.printf("No match found!%n");
+            }
+
+            if (deleteplease) {
+                Files.write(filepath, tempList);
+            }
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }
 
     }
 };

@@ -71,11 +71,11 @@ public class ContactManagementApp {
                     Contact.addContact();
                     break;
                 case "3":
-//                    System.out.println("searching for contact by contact name/prompt for name input, THREE WORKS");
                     Contact.searchContact();
                     break;
                 case "4":
-                    System.out.println("delete an existing contact - ask for confirmation, FOUR WORKS");
+//                    System.out.println("delete an existing contact - ask for confirmation, FOUR WORKS");
+                    Contact.deleteContact();
                     break;
                 case "5":
                     System.out.println("Exit system/final write");
