@@ -122,11 +122,12 @@ public class Contact {
         Path filepath = Paths.get("data", "contacts.txt");
         String userInput;
         String userDeleteInput;
+        String [] bucket;
         Scanner sc = new Scanner(System.in);
         boolean nomatch = true;
         boolean deleteplease = false;
 
-        System.out.printf("Search for existing contact to delete - please enter your search (either by NAME or PHONE NUMBER)%n");
+        System.out.printf("Search for existing contact to delete - please enter the name to search:%n");
         userInput = sc.nextLine();
 
         try {
@@ -135,7 +136,8 @@ public class Contact {
             List<String> tempList = new ArrayList<>();
 
             for (String contact : updatedList) {
-                if (contact.toLowerCase().contains(userInput.toLowerCase())) {
+                bucket = contact.split("\\|");
+                if (bucket[0].trim().toLowerCase().equalsIgnoreCase(userInput)) {
                     nomatch = false;
                     System.out.printf("Match to delete found:%s%nConfirm delete?%n", contact);
                     userDeleteInput = sc.nextLine();
@@ -155,7 +157,7 @@ public class Contact {
                 System.out.printf("No match found!%n");
             }
 
-            if (deleteplease) {
+            if (deleteplease && !tempList.isEmpty()) {
                 Files.write(filepath, tempList);
             }
 
