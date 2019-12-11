@@ -23,13 +23,6 @@ public class ContactManagementApp {
         String userInput;
         boolean userOpt = true;
 
-//        Contact kenHowell = new Contact("Ken Howell", "2103153119");
-//        Contact kellseyNeagley = new Contact("Kellsey Neagley", "2103810439");
-
-
-
-//        List<String> ListString = Arrays.asList(kenHowell.getName() + " | " + kenHowell.getContactNumber(), kellseyNeagley.getName() + " | " + kellseyNeagley.getContactNumber());
-
         try {
             if (!Files.exists(dataDirectory)) {
                 Files.createDirectories(dataDirectory);
@@ -87,11 +80,6 @@ public class ContactManagementApp {
         }
 
         System.out.printf("Thank you for using our Contact Management System! Please use our application again soon! OR ELSE!!");
-
-
-//        Path filepath = Paths.get("data", "contacts.txt");
-//        Files.write(filepath, (Iterable<? extends CharSequence>) testList);
-//        System.out.println("ken name = " + ken./getContactNumber());
 
     }
 }
